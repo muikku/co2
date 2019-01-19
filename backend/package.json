@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "c02 app",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "watch": "cross-env NODE_ENV=development nodemon index.js",
+    "lint": "eslint",
+    "test": "cross-env NODE_ENV=test jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muikku/co2.git"
+  },
+  "author": "Markus Muinonen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muikku/co2/issues"
+  },
+  "homepage": "https://github.com/muikku/co2#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jszip": "^3.1.5",
+    "mongoose": "^5.4.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.10.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.9"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
