@@ -2,20 +2,25 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { initializeCo2 } from './reducers/co2Reducer'
+import { initializeco2 } from './reducers/co2Reducer'
 /* import { logout, inituser } from './reducers/userReducer' */
 import { BrowserRouter as Router/* , Route, Redirect */ } from 'react-router-dom'
 /* import Users from './components/Users'
 import User from './components/User' */
 /* import { getUsers } from './reducers/usersReducer' */
-import { Container/* , Segment */ } from 'semantic-ui-react'
+import { Container, Segment } from 'semantic-ui-react'
+import Search from './components/search'
 /* import Navigator from './components/Navigator' */
+import ReactChartkick, { LineChart } from 'react-chartkick'
+import Chart from 'chart.js'
+
+ReactChartkick.addAdapter(Chart)
 
 
 class App extends React.Component {
   componentDidMount() {
     /* this.props.getUsers() */
-    this.props.initializeCo2()
+    this.props.initializeco2()
 
     /* const loggedUserJson = window.localStorage.getItem('loggedBlogUser')
     if (loggedUserJson){
@@ -28,16 +33,24 @@ class App extends React.Component {
     /*  const redirectToLogin = ['/', '/users', '/users/:id', '/blogs', '/blogs/:id', '/blogs/:id/comments'] */
     return (
       <Container>
-        <div>
-          <Router>
-            <div>
-              <h1>hello mega nice app here</h1>
-              {this.props.showCo2.map(c => <div key={c.toString()}>{c}</div>)}
-              {/*  <Navigator />
+        <Segment>
+          <div>
+            <Router>
+              <div>
+                <h1>CO² -emissions</h1>
+                <Search />
+                <Segment>
+                  {/* https://github.com/ankane/react-chartkick
+                  https://stackoverflow.com/questions/38284765/get-file-from-external-url-with-fs-readfile
+                   */}
+                <LineChart data={{ '2017-01-01': 11, '2017-01-02': 6, '2017-01-03': 9 }} />
+                </Segment>
+                
+                {/*  <Navigator />
               <Segment basic >{this.props.notifications.map(e => e)}</Segment> */}
 
 
-              {/* this.props.user.user ? <div>
+                {/* this.props.user.user ? <div>
                 <Route exact path='/' render={() =>
                   <Redirect to='/blogs'/>
                 }
@@ -82,9 +95,10 @@ class App extends React.Component {
                   }</div>
                */}
 
-            </div>
-          </Router>
-        </div>
+              </div>
+            </Router>
+          </div>
+        </Segment>
       </Container>
     )
   }
@@ -101,7 +115,7 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { initializeCo2/* ,
+  { initializeco2/* ,
     inituser,
     getUsers,
     logout */

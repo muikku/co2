@@ -9,7 +9,7 @@ const co2Reducer = (state = null, action) => {
   }
 }
 
-export const initializeCo2 = () => {
+export const initializeco2 = () => {
   return async (dispatch) => {
     co2Service.getAll().then(co2 =>
       dispatch({

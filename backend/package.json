@@ -20,11 +20,13 @@
   },
   "homepage": "https://github.com/muikku/co2#readme",
   "dependencies": {
+    "adm-zip": "^0.4.13",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "jszip": "^3.1.5",
-    "mongoose": "^5.4.4"
+    "mongoose": "^5.4.4",
+    "papaparse": "^4.6.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
