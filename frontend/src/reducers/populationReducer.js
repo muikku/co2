@@ -1,6 +1,6 @@
-import co2Service from '../services/co2'
+import populationService from '../services/population'
 
-const co2Reducer = (state = null, action) => {
+const populationReducer = (state = null, action) => {
   switch(action.type) {
   case 'INIT_CO2':
     return action.co2
@@ -9,12 +9,12 @@ const co2Reducer = (state = null, action) => {
   }
 }
 
-export const initializeco2 = () => {
+export const initializePopulation = () => {
   return async (dispatch) => {
-    co2Service.getAll().then(co2 =>
+    populationService.getAll().then(popul =>
       dispatch({
-        type: 'INIT_CO2',
-        co2
+        type: 'INIT_POPUL',
+        popul
       })
     )
   }
@@ -37,4 +37,4 @@ export const initializeco2 = () => {
   }
 } */
 
-export default co2Reducer
+export default populationReducer

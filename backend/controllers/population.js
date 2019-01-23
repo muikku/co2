@@ -1,20 +1,19 @@
-const co2Router = require('express').Router()
+const populationRouter = require('express').Router()
 const Papa = require('papaparse')
 
 const AdmZip = require('adm-zip')
 const request = require('request')
 
-const co2Data = 'http://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv'
+const populationData = 'http://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv'
 
-co2Router.get('/', async (req, res) => {
-  request.get({ url: co2Data, encoding: null }, (err, respond, body) => {
+
+populationRouter.get('/', async (req, res) => {
+  request.get({ url: populationData, encoding: null }, (err, respond, body) => {
     let zip = new AdmZip(body)
     let zipEntries = zip.getEntries()
-
     let data = ''
     zipEntries.forEach((entry) => {
-      if (entry.entryName.match('API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10312204.csv')){
-
+      if (entry.entryName.match('API_SP.POP.TOTL_DS2_en_csv_v2_10307762.csv')){
         data += (zip.readAsText(entry))
       }
     })
@@ -30,7 +29,7 @@ const filterAndReformArray = (data) => {
 
   ///deletes data we dont need
   const prefilter = data.filter(e => (
-    e[2] === 'Indicator Name' || e[2] === 'CO2 emissions (kt)')
+    e[2] === 'Indicator Name' || e[2] === 'Population, total')
     ? true : false
   )
 
@@ -52,4 +51,4 @@ const filterAndReformArray = (data) => {
   )
 }
 
-module.exports = co2Router
+module.exports = populationRouter

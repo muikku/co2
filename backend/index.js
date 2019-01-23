@@ -11,6 +11,7 @@ const userRouter = require('./controllers/user')
 const signInRouter = require('./controllers/signIn')
 
 const co2Router = require('./controllers/co2')
+const populationRouter = require('./controllers/population')
 
 const config = require('./utils/config')
 
@@ -24,6 +25,7 @@ mongoose.Promise = global.Promise
 app.use('/api/user', userRouter)
 
 app.use('/api/co2', co2Router)
+app.use('/api/population', populationRouter)
 app.use('/api/signIn', signInRouter)
 
 
