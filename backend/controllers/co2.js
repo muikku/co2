@@ -13,15 +13,14 @@ co2Router.get('/', async (req, res) => {
 
     let data = ''
     zipEntries.forEach((entry) => {
-      if (entry.entryName.match('API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10312204.csv')){
-
-        data += (zip.readAsText(entry))
-      }
+      data += (zip.readAsText(entry))
     })
     let parsed = Papa.parse(data)
-    let altered = filterAndReformArray(parsed.data)
 
-    res.json(altered)
+    let altered = filterAndReformArray(parsed.data)
+    console.log(altered)
+
+    res.json(parsed.data)
   })
 })
 

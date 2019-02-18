@@ -13,14 +13,12 @@ populationRouter.get('/', async (req, res) => {
     let zipEntries = zip.getEntries()
     let data = ''
     zipEntries.forEach((entry) => {
-      if (entry.entryName.match('API_SP.POP.TOTL_DS2_en_csv_v2_10307762.csv')){
-        data += (zip.readAsText(entry))
-      }
+      data += (zip.readAsText(entry))
     })
     let parsed = Papa.parse(data)
     let altered = filterAndReformArray(parsed.data)
 
-    res.json(altered)
+    res.json(parsed.data)
   })
 })
 
@@ -40,8 +38,10 @@ const filterAndReformArray = (data) => {
   const fromArrayToKeyAndValues = (countryInfo) => {
     let obj = {}
     countryInfo.forEach((element, i) => {
-      let keyName = objTitles[i]
-      obj[keyName] = element
+      if(element !== prefilter[i]){
+        let keyName = objTitles[i]
+        obj[keyName] = element
+      }
     })
     return (obj)
   } /// TODO: form array with {countryname : 1690: {population : asdfsdfa, co2: 283749823749}, suurvalta: true/false}

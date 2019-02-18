@@ -1,9 +1,9 @@
 import populationService from '../services/population'
 
-const populationReducer = (state = null, action) => {
+const populationReducer = (state = [], action) => {
   switch(action.type) {
-  case 'INIT_CO2':
-    return action.co2
+  case 'INIT_POPUL':
+    return action.popul
   default:
     return state
   }
@@ -21,20 +21,5 @@ export const initializePopulation = () => {
 }
 
 
-
-/* export const comment = (commented, comment) => {
-  return async (dispatch) => {
-    const altered = { ...commented, comments: commented.comments.concat(comment) }
-    const blog = await blogService.update(commented._id, altered)
-
-    notifyWith(`commented ${commented.title}`, true, 5000, dispatch)
-
-    dispatch({
-      type: 'UPDATE_BLOG',
-      updated: blog,
-      id: altered._id
-    })
-  }
-} */
 
 export default populationReducer

@@ -19,8 +19,8 @@ const config = require('./utils/config')
 app.use(cors())
 app.use(bodyParser.json())
 
-mongoose.connect(config.mongoUrl, { useNewUrlParser: true })
-mongoose.Promise = global.Promise
+/* mongoose.connect(config.mongoUrl, { useNewUrlParser: true })
+mongoose.Promise = global.Promise */
 
 app.use('/api/user', userRouter)
 
