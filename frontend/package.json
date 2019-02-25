@@ -5,7 +5,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "chart.js": "^2.7.3",
-    "jszip": "^3.1.5",
     "react": "^16.6.3",
     "react-chartkick": "^0.3.0",
     "react-dom": "^16.6.3",
@@ -23,7 +22,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ."
   },
-  "proxy": "http://localhost:3003",
+  "proxy": "http://localhost:3001",
   "devDependencies": {
     "cross-env": "^5.2.0",
     "enzyme": "^3.8.0",

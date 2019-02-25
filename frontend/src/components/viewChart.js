@@ -21,7 +21,7 @@ class viewChart extends React.Component {
       names: names.split(','),
       yearStart: start ? start : filter.yearStart,
       yearEnd: end ? end : filter.yearEnd,
-      yearPie: pie,
+      yearPie: pie ? pie : filter.yearPie,
       chart: type })
   }
 

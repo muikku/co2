@@ -41,7 +41,6 @@ class App extends React.Component {
         </Container>
       )
     }
-    console.log(filter)
     return (
       <Container>
         <Segment>
