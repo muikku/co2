@@ -7,11 +7,7 @@ const mongoose = require('mongoose')
 
 const middleware = require('./utils/middleware')
 
-const userRouter = require('./controllers/user')
-const signInRouter = require('./controllers/signIn')
-
-const co2Router = require('./controllers/co2')
-const populationRouter = require('./controllers/population')
+const unzipAndParseRouter = require('./controllers/unzipAndParse')
 
 const config = require('./utils/config')
 
@@ -22,11 +18,8 @@ app.use(bodyParser.json())
 /* mongoose.connect(config.mongoUrl, { useNewUrlParser: true })
 mongoose.Promise = global.Promise */
 
-app.use('/api/user', userRouter)
 
-app.use('/api/co2', co2Router)
-app.use('/api/population', populationRouter)
-app.use('/api/signIn', signInRouter)
+app.use('/api/unzipAndParse', unzipAndParseRouter)
 
 
 /* app.use(express.static('build')) */

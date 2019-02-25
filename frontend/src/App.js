@@ -5,86 +5,120 @@ import { connect } from 'react-redux'
 import { initializeco2 } from './reducers/co2Reducer'
 import { initializePopulation } from './reducers/populationReducer'
 import { BrowserRouter as Router , Route  } from 'react-router-dom'
-import { Container, Segment, Grid } from 'semantic-ui-react'
+import { Container, Segment, Grid, Header } from 'semantic-ui-react'
 import Search from './components/search'
 import Options from './components/options'
 import ChartNav from './components/chartnav'
 import ChartView from './components/viewChart'
-
+import MostEmissions from './components/pieChart'
+import ToggleGreatPowers from './components/checkGreatPowers'
 
 class App extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.initializeco2()
     this.props.initializePopulation()
   }
 
   render() {
-    const { filter } = this.props
+    const { filter, co2, pop } = this.props
+    try{  /// this is my way to handle server error...
+      co2.entries()
+      pop.entries()
+    } catch (e) {
+      return(
+        <Container>
+          <Segment>
+            <Header size={'huge'}>CO² -emissions</Header>
+            <Segment placeholder>
+              <Grid centered padded>
+                <Grid.Row>
+                  <Header size={'large'} color={'red'}> Sorry, there is a problem with backend :(</Header>
+                </Grid.Row>
+                <label>try again later!</label>
+              </Grid>
+            </Segment>
+          </Segment>
+        </Container>
+      )
+    }
+    console.log(filter)
     return (
       <Container>
         <Segment>
           <Router>
             <div>
+              <Header size={'huge'}>CO² -emissions</Header>
 
-              <Route path={'/'} render={({ history, match }) =>
+              { co2.length > 0 ?
                 <div>
-                  <h1>CO² -emissions</h1>
-                  <Grid columns={2} stackable >
-                    <Grid.Row >
-                      <Grid.Column>
+                  <Route path={'/'} render={({ history }) =>
+                    <div>
+                      <Grid columns={2} >
+                        <Grid.Row >
+                          <Grid.Column>
+                            <Search
+                              history={history}
+                            />
+                          </Grid.Column>
+                          <Grid.Column >
+                            <Segment basic>
+                              <ToggleGreatPowers
+                                history={history}
+                              />
+                            </Segment>
+                            <Segment basic>
+                              <Options
+                                history={history}
+                              />
+                            </Segment>
+                          </Grid.Column>
+                          <Grid.Column>
 
-                        <Search
-                          history={history}
-                          type={match.params.type}
-                        />
-
-                      </Grid.Column>
-                      <Grid.Column>
-
-                        <Options
-                          history={history}
-                        />
-
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                </div>}
-              />
-
-              { /* make selected countries visible */}
-              {filter.names.length > 0 ?
-                <div>
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </div>}
+                  />
 
                   <Grid centered column={1}>
                     <Grid.Column>
-
                       <ChartNav />
-
                     </Grid.Column>
                   </Grid>
+
+                  <Route exact path="/:type/:names/:start/:end" render={({ match }) =>
+                    <div>
+                      <Grid centered column={1}>
+                        <Grid.Column>
+                          <ChartView
+                            type={match.params.type}
+                            names={match.params.names}
+                            start={match.params.start}
+                            end={match.params.end}
+                            pie={filter.yearPie}
+                          />
+                        </Grid.Column>
+                      </Grid>
+                    </div>}/>
+
+                  <Route exact path="/:type/:names/:year" render={({ match }) =>
+                    <div>
+                      <Grid centered column={1}>
+                        <Grid.Column>
+                          <MostEmissions
+                            type={match.params.type}
+                            names={match.params.names}
+                            year={match.params.year}
+                          />
+                        </Grid.Column>
+                      </Grid>
+                    </div>}/>
                 </div>
                 :
                 null
               }
-
-              <Route exact path="/:type/:names/:start/:end" render={({ match }) =>
-                <div>
-                  <Grid centered column={1}>
-                    <Grid.Column>
-
-                      <ChartView
-                        type={match.params.type}
-                        names={match.params.names}
-                        start={match.params.start}
-                        end={match.params.end}
-                      />
-
-                    </Grid.Column>
-                  </Grid>
-                </div>
-              }
-              />
             </div>
+
           </Router>
         </Segment>
       </Container>
@@ -95,7 +129,9 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
 
   return  {
-    filter: state.filter ? state.filter : ''
+    filter: state.filter ? state.filter : '',
+    co2: state.co2,
+    pop: state.population
   }
 }
 

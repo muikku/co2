@@ -1,4 +1,5 @@
-import populationService from '../services/population'
+import dataService from '../services/dataService'
+const populationUrl = 'http://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv'
 
 const populationReducer = (state = [], action) => {
   switch(action.type) {
@@ -11,10 +12,16 @@ const populationReducer = (state = [], action) => {
 
 export const initializePopulation = () => {
   return async (dispatch) => {
-    populationService.getAll().then(popul =>
+    dataService.getData(populationUrl).then(popul =>
       dispatch({
         type: 'INIT_POPUL',
         popul
+      })
+    ).catch(e =>
+      dispatch({
+        type: 'INIT_POPUL',
+        popul: null,
+        e
       })
     )
   }

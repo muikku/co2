@@ -1,4 +1,5 @@
-import co2Service from '../services/co2'
+import dataService from '../services/dataService'
+const co2url = 'http://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv'
 
 const co2Reducer = (state = [], action) => {
   switch(action.type) {
@@ -11,10 +12,16 @@ const co2Reducer = (state = [], action) => {
 
 export const initializeco2 = () => {
   return async (dispatch) => {
-    co2Service.getAll().then(co2 =>
+    dataService.getData(co2url).then(co2 =>
       dispatch({
         type: 'INIT_CO2',
         co2
+      })
+    ).catch(e =>
+      dispatch({
+        type: 'INIT_CO2',
+        co2: null,
+        e
       })
     )
   }

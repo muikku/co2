@@ -1,34 +1,51 @@
-/* eslint-disable react/display-name */
 import {  Menu } from 'semantic-ui-react'
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 
+
 class Charts extends React.Component{
   render(){
-    const { names, yearStart, yearEnd } = this.props.filter
+    const { names, yearStart, yearEnd, yearPie } = this.props.filter
     return (
       <div>
-        <Menu>
-          <Menu.Menu >
-            <Menu.Item
-              link
-            >
-              <NavLink  activeStyle={{ fontWeight: 'bold' }} to={`/co2percapita/${names}/${yearStart}/${yearEnd}`}>co2 per capita</NavLink>
-            </Menu.Item>
-            <Menu.Item
-              link
-            >
-              <NavLink  activeStyle={{ fontWeight: 'bold' }} to={`/co2/${names}/${yearStart}/${yearEnd}`}>co2</NavLink>
-            </Menu.Item>
-            <Menu.Item
-              link
-            >
-              <NavLink  activeStyle={{ fontWeight: 'bold' }} to={`/population/${names}/${yearStart}/${yearEnd}`}>population</NavLink>
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu>
+
+        {names.length === 0 ?
+          <div>
+            <Menu>
+              <Menu.Item disabled>
+              Pie chart
+              </Menu.Item>
+              <Menu.Item disabled>
+              CO² per capita
+              </Menu.Item>
+              <Menu.Item disabled>
+              CO²
+              </Menu.Item>
+              <Menu.Item disabled>
+              Population
+              </Menu.Item>
+            </Menu>
+          </div>
+          :
+          <div>
+            <Menu>
+              <Menu.Item link>
+                <NavLink   to={`/Pie chart/${names}/${yearPie}`}>Pie chart</NavLink>
+              </Menu.Item>
+              <Menu.Item link>
+                <NavLink   to={`/CO² per capita/${names}/${yearStart}/${yearEnd}`}>CO² per capita</NavLink>
+              </Menu.Item>
+              <Menu.Item link>
+                <NavLink   to={`/CO²/${names}/${yearStart}/${yearEnd}`}>CO²</NavLink>
+              </Menu.Item>
+              <Menu.Item link>
+                <NavLink   to={`/Population/${names}/${yearStart}/${yearEnd}`}>Population</NavLink>
+              </Menu.Item>
+            </Menu>
+          </div>
+        }
       </div>
     )
   }
