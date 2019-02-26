@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ."
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://whispering-castle-37289.herokuapp.com/",
   "devDependencies": {
     "cross-env": "^5.2.0",
     "enzyme": "^3.8.0",

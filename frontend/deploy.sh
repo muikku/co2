@@ -1,3 +1,3 @@
 #!/bin/sh
 npm run build
-cp -r build ../backend
+cp -r build ./../../co2combo
