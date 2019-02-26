@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ."
   },
-  "proxy": "https://git.heroku.com/muikkuco2api.git",
+  "proxy": "https://muikkuco2api.herokuapp.com",
   "devDependencies": {
     "cross-env": "^5.2.0",
     "enzyme": "^3.8.0",
