@@ -7,6 +7,7 @@ const cors = require('cors')
 const middleware = require('./utils/middleware')
 
 const unzipAndParseRouter = require('./controllers/unzipAndParse')
+const hello = require('./controllers/hello')
 
 const config = require('./utils/config')
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 
 
 app.use('/api/unzipAndParse', unzipAndParseRouter)
+app.use('/', hello)
 
 
 app.use(middleware.logger)
