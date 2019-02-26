@@ -18,9 +18,6 @@ app.use(bodyParser.json())
 app.use('/api/unzipAndParse', unzipAndParseRouter)
 
 
-app.use(express.static('build'))
-
-
 app.use(middleware.logger)
 app.use(middleware.error)
 
