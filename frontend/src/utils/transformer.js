@@ -1,3 +1,5 @@
+///noticed that chart depency can use arrays.. so TODO: refactor these below...
+
 export const objectify = (filter, labels, arrays) => {
   try{
     const filtered = []
@@ -37,7 +39,7 @@ const divideCo2byPop = (filter, labels, arr1, arr2) => {
   const yearData = {}
   countryObj['name'] = arr1[0]
 
-  const indexOfMin = labels.indexOf(filter.yearStart)
+  const indexOfMin = labels.indexOf(filter.yearStart) /////toimiiko chartsit kuitenkin arrayllä? näiden muokkaus jos toimii
   const indexOfMax = labels.indexOf(filter.yearEnd)
 
   for (let index = indexOfMin; index <= indexOfMax; index++) {
@@ -101,3 +103,4 @@ export const top5 = (array) => {
 export const searchCountries = (names, array) => array.filter(e => names.includes(e[0]))
 
 export const checkIfContainsActualData = (array) => array.filter(e => e[1]).some(e => e !== null)
+

@@ -51,6 +51,7 @@ class App extends React.Component {
               { co2.length > 0 ?
                 <div>
                   <Route path={'/'} render={({ history }) =>
+                  /* TODO: this section looks horrible @ mobile, make it look bette */
                     <div>
                       <Grid columns={2} >
                         <Grid.Row >

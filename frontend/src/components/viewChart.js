@@ -48,8 +48,8 @@ class viewChart extends React.Component {
               height="400px"
               points={false}
               thousands=","
-              data={containsData(data) ? data : null}
-              messages={containsData(data) ? null : { empty: 'Sorry, no data. Try different filters!' }}
+              data={data ? data : null}
+              messages={data ? null : { empty: 'Sorry, no data. Try different filters!' }}
             />
           </Grid.Column>
         </Grid>
@@ -58,18 +58,7 @@ class viewChart extends React.Component {
   }
 }
 
-const containsData = (array) => {
-  try{
-    const data = array.map(e => e.data).filter(e => e)
-    if(data.length === 0){
-      return false
-    }
-    return true
 
-  } catch(e){
-    return false
-  }
-}
 
 const mapStateToProps = (state, props) => {
   const { filter, co2, population } = state
