@@ -1,3 +1,5 @@
 # co2
+Reactor summerjob entry task
 
-https://whispering-castle-37289.herokuapp.com/
+frontend working @ https://muikkuco2.herokuapp.com/
+api @ https://muikkuco2api.herokuapp.com/
