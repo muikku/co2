@@ -1,9 +1,14 @@
-# co2
-Reactor summerjob entry task
+# co2 emission app
+Preliminary assignment for Reaktor summer job application.
+My first web app project after Helsinki university full stack course.
 
-frontend working @ https://muikkuco2.herokuapp.com/
+react, node 
+
+frontend working @ https://muikkuco2.herokuapp.com/d
 api @ https://muikkuco2api.herokuapp.com/
 
 todo:
-refractor transformer.js 
+refactor transformer.js 
 make options look better in mobile
+change labels more consistent
+check method/function names 
