@@ -12,7 +12,7 @@ todo:
 
 start using google charts, refactor transformer.js for that
 
-make charts work properly when giving bad year
+make charts work properly when giving bad year, pie chart year 1960 not working properly, so is any year?
 
 change labels more consistent
 
