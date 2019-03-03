@@ -10,7 +10,7 @@ api @ https://muikkuco2api.herokuapp.com/
 
 todo:
 
-refactor transformer.js
+start using google charts, refactor transformer.js for that
 
 make charts work properly when giving bad year
 
