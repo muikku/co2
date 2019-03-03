@@ -5,7 +5,7 @@ I started this project January 13. 2019, and used as much time as I could betwee
 
 react, node 
 
-frontend working @ https://muikkuco2.herokuapp.com/d
+frontend working @ https://muikkuco2.herokuapp.com/
 api @ https://muikkuco2api.herokuapp.com/
 
 todo:
