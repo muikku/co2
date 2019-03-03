@@ -10,6 +10,6 @@ api @ https://muikkuco2api.herokuapp.com/
 
 todo:
 refactor transformer.js 
-make options look better in mobile
+chart work properly when giving bad year
 change labels more consistent
 check method/function names 
