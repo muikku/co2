@@ -9,7 +9,11 @@ frontend working @ https://muikkuco2.herokuapp.com/d
 api @ https://muikkuco2api.herokuapp.com/
 
 todo:
-refactor transformer.js 
-chart work properly when giving bad year
+
+refactor transformer.js
+
+make charts work properly when giving bad year
+
 change labels more consistent
+
 check method/function names 
